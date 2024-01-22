@@ -26,7 +26,7 @@ class CalculatorFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentCalculatorBinding.inflate(inflater, container, false)
 
-        calculatorFragmentViewModel.operandOne.observe(viewLifecycleOwner, Observer {
+        calculatorFragmentViewModel.displayText.observe(viewLifecycleOwner, Observer {
             binding.textView.text = it.toString()
         })
 
@@ -66,6 +66,20 @@ class CalculatorFragment : Fragment() {
             }
             buttonZero.setOnClickListener {
                 calculatorFragmentViewModel.textOutput(CalculatorFragmentViewModel.ZERO)
+            }
+            buttonC.setOnClickListener {
+                calculatorFragmentViewModel.clear()
+            }
+            buttonMultiply.setOnClickListener {
+            }
+            buttonDivide.setOnClickListener {
+            }
+            buttonPlus.setOnClickListener {
+                calculatorFragmentViewModel.textOutput(CalculatorFragmentViewModel.PLUS)
+            }
+            buttonMinus.setOnClickListener {
+            }
+            buttonEquals.setOnClickListener {
             }
         }
     }
