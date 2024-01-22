@@ -6,19 +6,39 @@ import androidx.lifecycle.ViewModel
 
 class CalculatorFragmentViewModel : ViewModel() {
 
-    private val _operandOne = MutableLiveData<String>("")
-    val operandOne: LiveData<String>
-        get() = _operandOne
+    private val _displayText = MutableLiveData<String>("")
+    val displayText: LiveData<String>
+        get() = _displayText
 
-    private var textDisplay = ""
+    private var operandOne = ""
+    private var operandTwo = ""
+    private var result = ""
 
     init {
-        _operandOne.value = textDisplay
+        _displayText.value = operandOne
     }
 
     fun textOutput(number: Int) {
-        textDisplay += number
-        _operandOne.value = textDisplay
+        operandOne += number
+        _displayText.value = operandOne
+    }
+
+    fun textOutput(symbol: String) {
+        operandOne += symbol
+        _displayText.value = operandOne
+    }
+
+    fun saveOperandOne(operandOneInput: Int) {
+        operandOne = operandOneInput.toString()
+    }
+
+    fun saveOperandTwo(operandTwoInput: Int) {
+        operandTwo = operandTwoInput.toString()
+    }
+
+    fun clear() {
+        operandOne = ""
+        _displayText.value = operandOne
     }
 
     companion object {
@@ -33,5 +53,7 @@ class CalculatorFragmentViewModel : ViewModel() {
         const val SEVEN = 7
         const val EIGHT = 8
         const val NINE = 9
+
+        const val PLUS = "+"
     }
 }
